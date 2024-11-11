@@ -20,7 +20,7 @@ import DiningIcon from "@mui/icons-material/Dining";
 import HomeRoundedIcon from "@mui/icons-material/HomeRounded";
 import DashboardRoundedIcon from "@mui/icons-material/DashboardRounded";
 import PersonIcon from "@mui/icons-material/Person";
-import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
+import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";
 import QuestionAnswerRoundedIcon from "@mui/icons-material/QuestionAnswerRounded";
 import GroupRoundedIcon from "@mui/icons-material/GroupRounded";
 import SupportRoundedIcon from "@mui/icons-material/SupportRounded";
@@ -31,7 +31,8 @@ import BrightnessAutoRoundedIcon from "@mui/icons-material/BrightnessAutoRounded
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 
 import ColorSchemeToggle from "./ColorSchemaToggle.tsx";
-import { closeSidebar } from "../utils";
+import { closeSidebar } from "../utils/sidebar";
+import { Link } from "react-router-dom";
 
 function Toggler({
   defaultExpanded = false,
@@ -147,39 +148,41 @@ export default function Sidebar() {
             "--ListItem-radius": (theme) => theme.vars.radius.sm,
           }}
         >
-          <ListItem>
-            <ListItemButton>
-              <HomeRoundedIcon />
-              <ListItemContent>
-                <Typography level="title-sm">Status</Typography>
-              </ListItemContent>
-            </ListItemButton>
-          </ListItem>
+          <Link to="/">
+            <ListItem>
+              <ListItemButton selected>
+                <HomeRoundedIcon />
+                <ListItemContent>
+                  <Typography level="title-sm">Status</Typography>
+                </ListItemContent>
+              </ListItemButton>
+            </ListItem>
+          </Link>
+
+          <Link to="profile">
+            <ListItem>
+              <ListItemButton>
+                <PersonIcon />
+                <ListItemContent>
+                  <Typography level="title-sm">Profile</Typography>
+                </ListItemContent>
+              </ListItemButton>
+            </ListItem>
+          </Link>
+
+          <Link to="meal">
+            <ListItem>
+              <ListItemButton>
+                <DiningIcon />
+                <ListItemContent>
+                  <Typography level="title-sm">Meal On/Off</Typography>
+                </ListItemContent>
+              </ListItemButton>
+            </ListItem>
+          </Link>
 
           <ListItem>
             <ListItemButton>
-              <PersonIcon />
-              <ListItemContent>
-                <Typography level="title-sm">Profile</Typography>
-              </ListItemContent>
-            </ListItemButton>
-          </ListItem>
-
-          <ListItem>
-            <ListItemButton selected>
-              <DiningIcon />
-              <ListItemContent>
-                <Typography level="title-sm">Meal On/Off</Typography>
-              </ListItemContent>
-            </ListItemButton>
-          </ListItem>
-
-          <ListItem>
-            <ListItemButton
-              role="menuitem"
-              component="a"
-              href="/joy-ui/getting-started/templates/messages/"
-            >
               <QuestionAnswerRoundedIcon />
               <ListItemContent>
                 <Typography level="title-sm">Notifications</Typography>

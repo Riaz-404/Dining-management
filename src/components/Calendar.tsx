@@ -8,7 +8,7 @@ import {
   sub,
 } from "date-fns";
 
-const Calendar = () => {
+const Calendar = ({ page }) => {
   const [currentDate, setCurrentDate] = useState(new Date());
 
   const mealOffDates: number[] = [3, 5, 10, 15, 16, 17, 11];
@@ -55,46 +55,48 @@ const Calendar = () => {
           <div className="text-base md:text-2xl font-semibold text-[#1a1a1a]">
             {format(currentDate, "LLLL yyyy")}
           </div>
-          <div className="flex gap-2 md:gap-3">
-            <button
-              className="cursor-pointer"
-              onClick={handleMonthBackward}
-              disabled={dateDiff > 65}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                className="size-7 md:size-8"
+          <div className={page === "meal" ? "hidden" : "block"}>
+            <div className="flex gap-2 md:gap-3">
+              <button
+                className="cursor-pointer"
+                onClick={handleMonthBackward}
+                disabled={dateDiff > 65}
               >
-                <path
-                  fillRule="evenodd"
-                  d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-4.28 9.22a.75.75 0 0 0 0 1.06l3 3a.75.75 0 1 0 1.06-1.06l-1.72-1.72h5.69a.75.75 0 0 0 0-1.5h-5.69l1.72-1.72a.75.75 0 0 0-1.06-1.06l-3 3Z"
-                  clipRule="evenodd"
-                />
-              </svg>
-            </button>
-            <button
-              className="cursor-pointer"
-              onClick={handleMonthForward}
-              disabled={
-                currentDate.getMonth() === new Date().getMonth() &&
-                currentDate.getFullYear() === new Date().getFullYear()
-              }
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                className="size-7 md:size-8"
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  className="size-7 md:size-8"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-4.28 9.22a.75.75 0 0 0 0 1.06l3 3a.75.75 0 1 0 1.06-1.06l-1.72-1.72h5.69a.75.75 0 0 0 0-1.5h-5.69l1.72-1.72a.75.75 0 0 0-1.06-1.06l-3 3Z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              </button>
+              <button
+                className="cursor-pointer"
+                onClick={handleMonthForward}
+                disabled={
+                  currentDate.getMonth() === new Date().getMonth() &&
+                  currentDate.getFullYear() === new Date().getFullYear()
+                }
               >
-                <path
-                  fillRule="evenodd"
-                  d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm4.28 10.28a.75.75 0 0 0 0-1.06l-3-3a.75.75 0 1 0-1.06 1.06l1.72 1.72H8.25a.75.75 0 0 0 0 1.5h5.69l-1.72 1.72a.75.75 0 1 0 1.06 1.06l3-3Z"
-                  clipRule="evenodd"
-                />
-              </svg>
-            </button>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  className="size-7 md:size-8"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm4.28 10.28a.75.75 0 0 0 0-1.06l-3-3a.75.75 0 1 0-1.06 1.06l1.72 1.72H8.25a.75.75 0 0 0 0 1.5h5.69l-1.72 1.72a.75.75 0 1 0 1.06 1.06l3-3Z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              </button>
+            </div>
           </div>
         </div>
         <div className="grid grid-cols-[repeat(7,_1fr)] text-center text-gray-700 font-semibold text-xs md:text-sm mb-[12px]">

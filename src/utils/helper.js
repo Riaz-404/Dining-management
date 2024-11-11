@@ -2,8 +2,9 @@ import { differenceInMinutes } from "date-fns";
 
 export function formatDate(dateStr) {
   return new Intl.DateTimeFormat("en", {
-    hour: "2-digit",
-    minute: "2-digit",
+    day: "numeric",
+    month: "short",
+    year: "numeric",
   }).format(new Date(dateStr));
 }
 

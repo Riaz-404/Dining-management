@@ -68,7 +68,7 @@ const Profile = () => {
           <dl className="divide-y divide-gray-100">
             <div className="px-4 py-6 text-center sm:gap-4 sm:px-0">
               <dd className="mt-1 text-sm/6 text-gray-700 flex justify-center sm:mt-0">
-                <Calendar />
+                <Calendar page={"profile"} />
               </dd>
             </div>
           </dl>

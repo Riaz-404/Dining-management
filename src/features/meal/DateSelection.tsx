@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { addDays, format, add } from "date-fns";
+import { format, add } from "date-fns";
 import { Calendar as CalendarIcon } from "lucide-react";
 import { DateRange } from "react-day-picker";
 
@@ -20,7 +20,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-import { formatDate, checkTimeOver } from "../../utils/helper.js";
+import { checkTimeOver } from "../../utils/helper.js";
 
 export function DateSelection({
   className,

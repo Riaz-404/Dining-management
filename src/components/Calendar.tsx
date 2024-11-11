@@ -9,43 +9,6 @@ import {
 } from "date-fns";
 
 const Calendar = () => {
-  // const [currentDate, setCurrentDate] = useState({
-  //   date: new Date().getDate().toLocaleString(),
-  //   month: new Date().getMonth().toLocaleString(),
-  //   year: new Date().getFullYear(),
-  // });
-
-  // const days = [
-  //   "Sunday",
-  //   "Monday",
-  //   "Tuesday",
-  //   "Wednesday",
-  //   "Thursday",
-  //   "Friday",
-  //   "Saturday",
-  // ];
-
-  // const daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-
-  // if (Number(currentDate.year % 4 == 0)) daysInMonth[1] = 29;
-
-  // const firstDay = new Date(
-  //   `${currentDate.year}-${Number(currentDate.month) + 1}-01`
-  // );
-
-  // const firstDayNo: number = firstDay.getDay();
-
-  // console.log(firstDayNo);
-
-  // const dateLinkedWithDay = [];
-
-  // let x: number = daysInMonth[firstDay.getMonth()];
-
-  // while (x) {
-  //   console.log("hi");
-  //   x--;
-  // }
-
   const [currentDate, setCurrentDate] = useState(new Date());
 
   const mealOffDates: number[] = [3, 5, 10, 15, 16, 17, 11];

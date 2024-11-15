@@ -8,11 +8,22 @@ import {
   sub,
 } from "date-fns";
 
-const Calendar = ({ page }) => {
+const Calendar = ({ page, userMealDetails }) => {
   const [currentDate, setCurrentDate] = useState(new Date());
+  const currentMonth = new Date(currentDate).toLocaleString("default", {
+    month: "long",
+    year: "numeric",
+  });
 
-  const mealOffDates: number[] = [3, 5, 10, 15, 16, 17, 11];
-  const diningOffDates: number[] = [20, 27];
+  console.log(userMealDetails);
+  let mealOffDates: number[] = [];
+  let diningOffDates: number[] = [];
+
+  userMealDetails.meal.map((item) => {
+    if (item.month === currentMonth) {
+      mealOffDates = item.offDays;
+    }
+  });
 
   const firstDayOfTheMonth = startOfMonth(currentDate);
   const lastDayOfTheMonth = lastDayOfMonth(currentDate);

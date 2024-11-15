@@ -21,6 +21,7 @@ import {
 } from "@/components/ui/select";
 
 import { checkTimeOver } from "../../utils/helper.js";
+import { mealOnOff } from "../../utils/apiRequest.js";
 
 export function DateSelection({
   className,
@@ -31,6 +32,10 @@ export function DateSelection({
   });
 
   const [action, setAction] = useState("off");
+  const currentMonth = new Date().toLocaleString("default", {
+    month: "long",
+    year: "numeric",
+  });
 
   const disabledDate = checkTimeOver()
     ? add(new Date(), { days: 2 })
@@ -38,7 +43,7 @@ export function DateSelection({
 
   const beforeMatcher = { before: disabledDate };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     // Data send korar time handle korte hobe
@@ -47,7 +52,16 @@ export function DateSelection({
     //   ((date) => setDate{ from: date?.from, to: date?.from });
     // }
 
-    console.log(date, action);
+    const payload = {
+      _id: "6735986772e4ce4c16f20fa2",
+      month: currentMonth,
+      days: [date?.from?.getDate(), date?.to?.getDate()],
+      action: action,
+    };
+
+    const updateMeal = await mealOnOff(payload);
+
+    console.log(updateMeal);
   };
 
   return (

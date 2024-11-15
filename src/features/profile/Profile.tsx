@@ -1,7 +1,12 @@
+/* eslint-disable react-refresh/only-export-components */
 import Calendar from "@/components/Calendar";
 import MainContent from "@/ui/MainContent";
+import { getUserMealDetails } from "../../utils/apiRequest.js";
+import { useLoaderData } from "react-router-dom";
 
 const Profile = () => {
+  const userMealDetails = useLoaderData();
+
   return (
     <MainContent title="Profile">
       <div>
@@ -68,7 +73,7 @@ const Profile = () => {
           <dl className="divide-y divide-gray-100">
             <div className="px-4 py-6 text-center sm:gap-4 sm:px-0">
               <dd className="mt-1 text-sm/6 text-gray-700 flex justify-center sm:mt-0">
-                <Calendar page={"profile"} />
+                <Calendar page={"profile"} userMealDetails={userMealDetails}/>
               </dd>
             </div>
           </dl>
@@ -77,4 +82,10 @@ const Profile = () => {
     </MainContent>
   );
 };
+
+export async function loader() {
+  const user = await getUserMealDetails("6735986772e4ce4c16f20fa2");
+  return user;
+}
+
 export default Profile;
